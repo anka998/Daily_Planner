@@ -1,4 +1,11 @@
-records = []  
+records = [] 
+
+def add_record():
+    print("\n--- Добавление записи ---")
+    date = input("Введите дату (ГГГГ-ММ-ДД): ")
+    text = input("Введите текст записи: ")
+    records.append({"date": date, "text": text})
+    print(f"✅ Запись на {date} добавлена!\n") 
 
 def show_menu():
     print("=" * 35)
@@ -19,10 +26,10 @@ def main():
         if choice == "0":
             print("До свидания!")
             break
-        elif choice in ["1", "2", "3", "4"]:
+        elif choice == "1":
+            add_record()
+        elif choice in ["2", "3", "4"]:
             print("⏳ Функция будет добавлена позже.")
-        else:
-            print("❌ Неверный ввод. Попробуйте снова.")
 
 if __name__ == "__main__":
     main()
