@@ -1,5 +1,3 @@
-# Приложение "ЕЖЕДНЕВНИК"
-
 records = []
 
 def add_record():
@@ -15,7 +13,7 @@ def view_records():
         print("Записей нет.")
     else:
         for i, rec in enumerate(records):
-            print(f"{i+1}. {rec['date']} — {rec['text']}")
+            print(f"{i+1}. {rec['date']} - {rec['text']}")
     print()
 
 def search_record():
@@ -24,11 +22,12 @@ def search_record():
     found = False
     for rec in records:
         if rec["date"] == date:
-            print(f"Найдено: {rec['date']} — {rec['text']}")
+            print(f"Найдено: {rec['date']} - {rec['text']}")
             found = True
     if not found:
         print(f"Записей на {date} не найдено.")
-    print() 
+    print()
+
 def delete_record():
     print("\n--- Удаление записи ---")
     view_records()
@@ -42,7 +41,8 @@ def delete_record():
                 print("Неверный номер записи.")
         except ValueError:
             print("Введите число.")
-    print() 
+    print()
+
 def show_menu():
     print("=" * 35)
     print("Е Ж Е Д Н Е В Н И К")
@@ -70,6 +70,7 @@ def main():
         elif choice == "4":
             delete_record()
         else:
-            print("Неверный ввод. Попробуйте снова.") 
+            print("Неверный ввод. Попробуйте снова.")
+
 if __name__ == "__main__":
-    main() 
+    main()
