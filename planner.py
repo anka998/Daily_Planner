@@ -18,12 +18,37 @@ def view_records():
             print(f"{i+1}. {rec['date']} — {rec['text']}")
     print()
 
+def search_record():
+    print("\n--- Поиск записи ---")
+    date = input("Введите дату для поиска (ГГГГ-ММ-ДД): ")
+    found = False
+    for rec in records:
+        if rec["date"] == date:
+            print(f"Найдено: {rec['date']} — {rec['text']}")
+            found = True
+    if not found:
+        print(f"Записей на {date} не найдено.")
+    print() 
+def delete_record():
+    print("\n--- Удаление записи ---")
+    view_records()
+    if records:
+        try:
+            num = int(input("Введите номер записи для удаления: "))
+            if 1 <= num <= len(records):
+                removed = records.pop(num - 1)
+                print(f"Запись '{removed['text']}' удалена!")
+            else:
+                print("Неверный номер записи.")
+        except ValueError:
+            print("Введите число.")
+    print() 
 def show_menu():
     print("=" * 35)
     print("Е Ж Е Д Н Е В Н И К")
     print("=" * 35)
     print("1. Добавить запись")
-    print("2. [👁️] Показать все записи")
+    print("2. Показать все записи")
     print("3. Найти запись по дате")
     print("4. Удалить запись")
     print("0. Выход")
@@ -40,10 +65,11 @@ def main():
             add_record()
         elif choice == "2":
             view_records()
-        elif choice in ["3", "4"]:
-            print("Функция будет добавлена позже.")
+        elif choice == "3":
+            search_record()
+        elif choice == "4":
+            delete_record()
         else:
-            print("Неверный ввод. Попробуйте снова.")
-
+            print("Неверный ввод. Попробуйте снова.") 
 if __name__ == "__main__":
-    main()
+    main() 
